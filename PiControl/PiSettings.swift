@@ -420,7 +420,6 @@ class PiGPIOPin: NSObject, NSCoding {
         aCoder.encode(number, forKey: "number")
         aCoder.encode(type.toInt(), forKey: "pinType")
         aCoder.encode(polling, forKey: "polling")
-        print("ewfewf")
     }
 }
 

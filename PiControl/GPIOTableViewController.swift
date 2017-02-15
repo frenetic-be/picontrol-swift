@@ -19,6 +19,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
     
     @IBOutlet var GPIOTableView: UITableView!
     @IBOutlet weak var addPinButton: UIBarButtonItem!
+//    @IBOutlet weak var editPinsButton: UIBarButtonItem!
     
 
     
@@ -29,9 +30,11 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.leftBarButtonItem?.title = "< \(backTitle)"
-        addPinButton.isEnabled = isOn
+        navigationItem.setRightBarButtonItems([addPinButton, editButtonItem], animated: false)
+        for item in navigationItem.rightBarButtonItems! {
+            item.isEnabled = isOn
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,41 +102,46 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         }
     }
 
-    /*
+
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        if indexPath.section == 0 {
+            return false
+        }
         return true
     }
-    */
 
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            pins.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if indexPath.section == 1 {
+                // Delete the row from the data source
+                pins.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
  
 
-    /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let itemToMove = pins[fromIndexPath.row]
+        pins.remove(at: fromIndexPath.row)
+        pins.insert(itemToMove, at: to.row)
     }
-    */
 
-    /*
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
+        if indexPath.section == 0 {
+            return false
+        }
         return true
     }
-    */
 
     
     // MARK: - Navigation
@@ -161,7 +169,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
                 }
             }
             destination.existingPins = pinNumbers
-            destination.nextAvailablePin = nextAvailablePin()!
+            destination.nextAvailablePin = min(destination.pin.number, nextAvailablePin()!)
         default:
 //            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
             return
@@ -171,7 +179,11 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
 
     @IBAction func toggleMainSwitch(_ sender: UISwitch) {
         isOn = sender.isOn
-        addPinButton.isEnabled = isOn
+//        addPinButton.isEnabled = isOn
+//        editPinsButton.isEnabled = isOn
+        for item in navigationItem.rightBarButtonItems! {
+            item.isEnabled = isOn
+        }
         GPIOTableView.reloadData()
     }
 
