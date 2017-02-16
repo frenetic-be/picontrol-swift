@@ -1,20 +1,19 @@
 //
-//  UserCommandTableViewCell.swift
+//  DashboardGPIOTableViewCell.swift
 //  PiControl
 //
-//  Created by Julien Spronck on 13/02/2017.
+//  Created by Julien Spronck on 15/02/2017.
 //  Copyright © 2017 Julien Spronck. All rights reserved.
 //
 
 import UIKit
 
-class UserCommandTableViewCell: UITableViewCell {
-    
-    // MARK: Properties
-    
-    @IBOutlet weak var buttonNameTextField: UITextField!
-    @IBOutlet weak var commandStringTextField: UITextField!
+class DashboardGPIOTableViewCell: UITableViewCell {
 
+    var pinNumber: UInt = 2
+    
+    @IBOutlet weak var GPIOLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,5 +24,10 @@ class UserCommandTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func GPIOSwitchHasChanged(_ sender: UISwitch) {
+        print("\(pinNumber): \(sender.isOn)")
+    }
+    
 
 }

@@ -9,18 +9,22 @@
 import UIKit
 import os.log
 
+protocol GPIOProtocol {
+    // Protocol to send data back to the ServerConfigTableViewController
+    func changedGPIOIsOn(isOn: Bool)
+    func changedGPIOPins(pins: [PiGPIOPin])
+}
+
 class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
 
     // MARK: Properties
     var isOn = false
     var pins = [PiGPIOPin]()
-    var backTitle = ""
     var selectedRow: IndexPath?
+    var delegate: GPIOProtocol?
     
     @IBOutlet var GPIOTableView: UITableView!
-    @IBOutlet weak var addPinButton: UIBarButtonItem!
-//    @IBOutlet weak var editPinsButton: UIBarButtonItem!
-    
+    @IBOutlet weak var addPinButton: UIBarButtonItem!    
 
     
     override func viewDidLoad() {
@@ -30,7 +34,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.leftBarButtonItem?.title = "< \(backTitle)"
+
         navigationItem.setRightBarButtonItems([addPinButton, editButtonItem], animated: false)
         for item in navigationItem.rightBarButtonItems! {
             item.isEnabled = isOn
@@ -120,6 +124,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
                 // Delete the row from the data source
                 pins.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                delegate?.changedGPIOPins(pins: pins)
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -132,6 +137,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         let itemToMove = pins[fromIndexPath.row]
         pins.remove(at: fromIndexPath.row)
         pins.insert(itemToMove, at: to.row)
+        delegate?.changedGPIOPins(pins: pins)
     }
 
     // Override to support conditional rearranging of the table view.
@@ -184,6 +190,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         for item in navigationItem.rightBarButtonItems! {
             item.isEnabled = isOn
         }
+        delegate?.changedGPIOIsOn(isOn: isOn)
         GPIOTableView.reloadData()
     }
 
@@ -218,6 +225,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         if let row = selectedRow {
             GPIOTableView.reloadRows(at: [row], with: .none)
         }
+        delegate?.changedGPIOPins(pins: pins)
     }
 
 }

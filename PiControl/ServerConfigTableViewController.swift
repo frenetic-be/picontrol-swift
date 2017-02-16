@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class ServerConfigTableViewController: UITableViewController, UITextFieldDelegate {
+class ServerConfigTableViewController: UITableViewController, UITextFieldDelegate, GPIOProtocol, UserCommandsProtocol {
 
     // MARK: Properties
     var currentServer = PiServer(name: "", hostName: "localhost", port: 3000)
@@ -125,25 +125,20 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
         let segueID = segue.identifier ?? ""
         switch segueID {
         case "ShowUserCommands":
-            guard let navVC = segue.destination as? UINavigationController else {
+            guard let destination = segue.destination as? CommandsTableViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let destination = navVC.topViewController as? CommandsTableViewController else {
-                fatalError("Unexpected destination: \(navVC.topViewController)")
             }
             destination.isOn = currentServer.userCommands.isOn
             destination.commands = currentServer.userCommands.commands
-            destination.backTitle = navigationItem.title ?? ""
+            destination.delegate = self
+
         case "ShowGPIO":
-            guard let navVC = segue.destination as? UINavigationController else {
+            guard let destination = segue.destination as? GPIOTableViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let destination = navVC.topViewController as? GPIOTableViewController else {
-                fatalError("Unexpected destination: \(navVC.topViewController)")
             }
             destination.isOn = currentServer.gpio.isOn
             destination.pins = currentServer.gpio.pins
-            destination.backTitle = navigationItem.title ?? ""
+            destination.delegate = self
         default:
             guard let button = sender as? UIBarButtonItem, button === savePiButton else {
                 os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
@@ -196,5 +191,20 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
         }
     }
 
+    // MARK: GPIOProtocol
+    func changedGPIOIsOn(isOn: Bool) {
+        currentServer.gpio.isOn = isOn
+    }
     
+    func changedGPIOPins(pins: [PiGPIOPin]) {
+        currentServer.gpio.pins = pins
+    }
+    // MARK: UserCommandsProtocol
+    func changedCommandsIsOn(isOn: Bool) {
+        currentServer.userCommands.isOn = isOn
+    }
+    
+    func changedCommands(commands: [PiCommand]) {
+        currentServer.userCommands.commands = commands
+    }
 }

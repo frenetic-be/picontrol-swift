@@ -11,7 +11,6 @@
 		474757971E5220CA00B36050 /* ServerConfigTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757961E5220CA00B36050 /* ServerConfigTableViewController.swift */; };
 		474757991E52550400B36050 /* CommandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757981E52550400B36050 /* CommandsTableViewController.swift */; };
 		4747579B1E5259BA00B36050 /* MasterSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4747579A1E5259BA00B36050 /* MasterSwitchTableViewCell.swift */; };
-		4747579D1E525D1A00B36050 /* UserCommandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4747579C1E525D1A00B36050 /* UserCommandTableViewCell.swift */; };
 		4747579F1E529B5C00B36050 /* GPIOTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4747579E1E529B5C00B36050 /* GPIOTableViewController.swift */; };
 		474757A11E52E8C400B36050 /* GPIOPinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757A01E52E8C400B36050 /* GPIOPinTableViewController.swift */; };
 		477F30641E4F8F1000B6F671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30631E4F8F1000B6F671 /* AppDelegate.swift */; };
@@ -22,6 +21,11 @@
 		477F30791E4F8F1000B6F671 /* PiControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30781E4F8F1000B6F671 /* PiControlTests.swift */; };
 		477F30841E4F8F1000B6F671 /* PiControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30831E4F8F1000B6F671 /* PiControlUITests.swift */; };
 		477F30941E4F953500B6F671 /* PiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30931E4F953500B6F671 /* PiSettings.swift */; };
+		47C933CC1E54F9A000B7FDDA /* UserCommandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CB1E54F9A000B7FDDA /* UserCommandTableViewController.swift */; };
+		47C933CE1E55326F00B7FDDA /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */; };
+		47C933D01E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */; };
+		47C933D41E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933D31E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift */; };
+		47C933D61E55525200B7FDDA /* DashboardGPIOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933D51E55525200B7FDDA /* DashboardGPIOTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +50,6 @@
 		474757961E5220CA00B36050 /* ServerConfigTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfigTableViewController.swift; sourceTree = "<group>"; };
 		474757981E52550400B36050 /* CommandsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTableViewController.swift; sourceTree = "<group>"; };
 		4747579A1E5259BA00B36050 /* MasterSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		4747579C1E525D1A00B36050 /* UserCommandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCommandTableViewCell.swift; sourceTree = "<group>"; };
 		4747579E1E529B5C00B36050 /* GPIOTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPIOTableViewController.swift; sourceTree = "<group>"; };
 		474757A01E52E8C400B36050 /* GPIOPinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPIOPinTableViewController.swift; sourceTree = "<group>"; };
 		477F30601E4F8F1000B6F671 /* PiControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +66,11 @@
 		477F30831E4F8F1000B6F671 /* PiControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiControlUITests.swift; sourceTree = "<group>"; };
 		477F30851E4F8F1000B6F671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		477F30931E4F953500B6F671 /* PiSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiSettings.swift; sourceTree = "<group>"; };
+		47C933CB1E54F9A000B7FDDA /* UserCommandTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCommandTableViewController.swift; sourceTree = "<group>"; };
+		47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
+		47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCommandTableViewCell.swift; sourceTree = "<group>"; };
+		47C933D31E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardAnyCommandTableViewCell.swift; sourceTree = "<group>"; };
+		47C933D51E55525200B7FDDA /* DashboardGPIOTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardGPIOTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,13 +125,17 @@
 				477F30651E4F8F1000B6F671 /* ViewController.swift */,
 				477F30671E4F8F1000B6F671 /* Main.storyboard */,
 				477F30931E4F953500B6F671 /* PiSettings.swift */,
+				47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */,
+				47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */,
+				47C933D31E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift */,
+				47C933D51E55525200B7FDDA /* DashboardGPIOTableViewCell.swift */,
 				474757941E5220A100B36050 /* ServerListTableViewController.swift */,
 				474757961E5220CA00B36050 /* ServerConfigTableViewController.swift */,
 				474757981E52550400B36050 /* CommandsTableViewController.swift */,
+				47C933CB1E54F9A000B7FDDA /* UserCommandTableViewController.swift */,
 				4747579E1E529B5C00B36050 /* GPIOTableViewController.swift */,
 				474757A01E52E8C400B36050 /* GPIOPinTableViewController.swift */,
 				4747579A1E5259BA00B36050 /* MasterSwitchTableViewCell.swift */,
-				4747579C1E525D1A00B36050 /* UserCommandTableViewCell.swift */,
 				477F306A1E4F8F1000B6F671 /* Assets.xcassets */,
 				477F306C1E4F8F1000B6F671 /* LaunchScreen.storyboard */,
 				477F306F1E4F8F1000B6F671 /* Info.plist */,
@@ -283,13 +295,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47C933CC1E54F9A000B7FDDA /* UserCommandTableViewController.swift in Sources */,
 				4747579F1E529B5C00B36050 /* GPIOTableViewController.swift in Sources */,
 				474757951E5220A100B36050 /* ServerListTableViewController.swift in Sources */,
+				47C933D41E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift in Sources */,
 				4747579B1E5259BA00B36050 /* MasterSwitchTableViewCell.swift in Sources */,
-				4747579D1E525D1A00B36050 /* UserCommandTableViewCell.swift in Sources */,
+				47C933D01E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift in Sources */,
 				477F30661E4F8F1000B6F671 /* ViewController.swift in Sources */,
 				474757971E5220CA00B36050 /* ServerConfigTableViewController.swift in Sources */,
+				47C933D61E55525200B7FDDA /* DashboardGPIOTableViewCell.swift in Sources */,
 				477F30941E4F953500B6F671 /* PiSettings.swift in Sources */,
+				47C933CE1E55326F00B7FDDA /* DashboardTableViewController.swift in Sources */,
 				477F30641E4F8F1000B6F671 /* AppDelegate.swift in Sources */,
 				474757A11E52E8C400B36050 /* GPIOPinTableViewController.swift in Sources */,
 				474757991E52550400B36050 /* CommandsTableViewController.swift in Sources */,

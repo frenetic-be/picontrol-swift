@@ -27,6 +27,7 @@ class ServerListTableViewController: UITableViewController {
         // settings.deleteAll()
         settings.load()
         tableView.dataSource = self
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,8 +56,14 @@ class ServerListTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let server = settings.servers[indexPath.row]
         if let label = cell.textLabel {
-            label.text = server.name
+            let selectedServer = settings.selectedServer ?? settings.servers[0]
+            if server == selectedServer {
+                label.text = "\u{2713}  \(server.name)"
+            } else {
+                label.text = "\u{2001}  \(server.name)"
+            }
         }
+
         return cell
     }
 
@@ -78,12 +85,15 @@ class ServerListTableViewController: UITableViewController {
         }    
     }
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let itemToMove = settings.servers[fromIndexPath.row]
+        settings.servers.remove(at: fromIndexPath.row)
+        settings.servers.insert(itemToMove, at: to.row)
+        settings.save()
     }
-    */
+ 
 
     /*
     // Override to support conditional rearranging of the table view.
@@ -93,6 +103,11 @@ class ServerListTableViewController: UITableViewController {
     }
     */
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        settings.selectedServer = settings.servers[indexPath.row]
+        tableView.reloadData()
+        settings.save()
+    }
     
     // MARK: - Navigation
 

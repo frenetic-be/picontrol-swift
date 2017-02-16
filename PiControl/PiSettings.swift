@@ -14,19 +14,23 @@ import os.log
  Class representing the user settings
  */
 class PiSettings: NSObject, NSCoding {
-
+    
     /// List of servers
     var servers = [PiServer]()
+    
+    /// Selected server
+    var selectedServer: PiServer?
     
     // MARK: Methods
     
     func string() -> String {
-        var str = "Settings:\n"
+        var str = "Settings:\n    Servers:\n"
         for server in servers {
             server.string().enumerateLines { (line, stop) in
-                str.append("    \(line)\n")
+                str.append("        \(line)\n")
             }
         }
+        str.append("    Selected server: \(selectedServer?.name ?? "")\n")
         return str
     }
     
@@ -35,6 +39,11 @@ class PiSettings: NSObject, NSCoding {
             if let loadedSettings = NSKeyedUnarchiver.unarchiveObject(with: loadedData) as? PiSettings {
                 for server in loadedSettings.servers {
                     servers.append(server)
+                }
+                if servers.count == 1 {
+                    selectedServer = servers[0]
+                } else {
+                    selectedServer = loadedSettings.selectedServer
                 }
                 print(string())
             }
@@ -63,11 +72,17 @@ class PiSettings: NSObject, NSCoding {
             return nil
         }
         self.servers = servers
+        guard let selectedServer = aDecoder.decodeObject(forKey: "selectedServer") as? PiServer? else {
+            os_log("Unable to decode `selectedServer` for a PiSettings object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        self.selectedServer = selectedServer
     }
     
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(servers, forKey: "servers")
+        aCoder.encode(selectedServer, forKey: "selectedServer")
     }
     
 }
