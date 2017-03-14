@@ -18,6 +18,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
     @IBOutlet weak var hostNameTextField: UITextField!
     @IBOutlet weak var portNumberTextField: UITextField!
     @IBOutlet weak var anyCommandSwitch: UISwitch!
+    @IBOutlet weak var responseOnSwitch: UISwitch!
     
     @IBOutlet weak var savePiButton: UIBarButtonItem!
     
@@ -45,6 +46,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
         hostNameTextField.text = currentServer.hostName
         portNumberTextField.text = "\(currentServer.port)"
         anyCommandSwitch.isOn = currentServer.anyCommand
+        responseOnSwitch.isOn = currentServer.responseOn
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +67,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
             case 0:
                 return 3
             case 1:
-                return 3
+                return 4
             default:
                 return 0
         }
@@ -139,6 +141,8 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
             destination.isOn = currentServer.gpio.isOn
             destination.pins = currentServer.gpio.pins
             destination.delegate = self
+            destination.hostName = currentServer.hostName
+            destination.portNumber = currentServer.port
         default:
             guard let button = sender as? UIBarButtonItem, button === savePiButton else {
                 os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
@@ -150,6 +154,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
             let portNumber = portNumberTextField.text ?? "3000"
             currentServer.port = UInt(portNumber)!
             currentServer.anyCommand = anyCommandSwitch.isOn
+            currentServer.responseOn = responseOnSwitch.isOn
         }
 
     }
@@ -180,8 +185,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
     }
     @IBAction func cancelNewPi(_ sender: UIBarButtonItem) {
         // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddPiMode = presentingViewController is UINavigationController
-        
+        let isPresentingInAddPiMode = presentingViewController is UITabBarController
         if isPresentingInAddPiMode {
             dismiss(animated: true, completion: nil)
         } else if let owningNavigationController = navigationController{

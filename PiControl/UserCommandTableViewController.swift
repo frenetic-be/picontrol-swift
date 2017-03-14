@@ -20,6 +20,7 @@ class UserCommandTableViewController: UITableViewController {
 
     @IBOutlet weak var buttonNameTextField: UITextField!
     @IBOutlet weak var commandStringTextField: UITextField!
+    @IBOutlet weak var commandHasArgumentsSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class UserCommandTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         buttonNameTextField.text = command.buttonName
         commandStringTextField.text = command.command
+        commandHasArgumentsSwitch.isOn = command.commandHasArguments
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +49,7 @@ class UserCommandTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
 
     /*
@@ -114,4 +116,7 @@ class UserCommandTableViewController: UITableViewController {
         delegate?.reloadData()
     }
 
+    @IBAction func hasArgumentsChanged(_ sender: UISwitch) {
+        command.commandHasArguments = sender.isOn
+    }
 }

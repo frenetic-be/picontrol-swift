@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol GPIODictionaryProtocol {
+    func updateGPIODictionary(pinNumber: Int, value: Int)
+}
+
 class DashboardGPIOTableViewCell: UITableViewCell {
 
     var pinNumber: UInt = 2
+    var socket: SocketIOManager?
+    var delegate: GPIODictionaryProtocol?
     
     @IBOutlet weak var GPIOLabel: UILabel!
+    @IBOutlet weak var GPIOSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +33,8 @@ class DashboardGPIOTableViewCell: UITableViewCell {
     }
     
     @IBAction func GPIOSwitchHasChanged(_ sender: UISwitch) {
-        print("\(pinNumber): \(sender.isOn)")
+        socket?.setGPIO(pin: Int(pinNumber), value: sender.isOn)
+        delegate?.updateGPIODictionary(pinNumber: Int(pinNumber), value: sender.isOn ? 1 : 0)
     }
     
 

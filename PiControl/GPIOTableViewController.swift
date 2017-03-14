@@ -15,13 +15,16 @@ protocol GPIOProtocol {
     func changedGPIOPins(pins: [PiGPIOPin])
 }
 
-class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
+class GPIOTableViewController: UITableViewController, GPIOPinProtocol, ConfigServerResponseProtocol {
 
     // MARK: Properties
     var isOn = false
     var pins = [PiGPIOPin]()
     var selectedRow: IndexPath?
     var delegate: GPIOProtocol?
+    var hostName = ""
+    var portNumber: UInt = 3000
+    var serverResponse = ""
     
     @IBOutlet var GPIOTableView: UITableView!
     @IBOutlet weak var addPinButton: UIBarButtonItem!    
@@ -63,7 +66,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +77,16 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         case 1:
             if isOn {
                 return pins.count
+            }
+            return 0
+        case 2:
+            if isOn {
+                return 1
+            }
+            return 0
+        case 3:
+            if isOn {
+                return 1
             }
             return 0
         default:
@@ -101,19 +114,41 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
                 label.text = gpiopin.name
             }
             return cell
+        case 2:
+            cellID = "GPIOConfigTableViewCell"
+//            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? GPIOConfigTableViewCell  else {
+                fatalError("The dequeued cell is not an instance of GPIOConfigTableViewCell.")
+            }
+
+            cell.separatorInset = UIEdgeInsetsMake(0, cell.frame.width/2, 0, cell.frame.width/2)
+            if hostName == "" || pins.count == 0 {
+                cell.configButton.isEnabled = false
+            } else {
+                cell.configButton.isEnabled = true
+            }
+            return cell
+        case 3:
+            cellID = "GPIOConfigStatusTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+            cell.layer.backgroundColor = UIColor.clear.cgColor
+            cell.textLabel?.text = serverResponse
+            cell.textLabel?.backgroundColor = UIColor.clear
+            return cell
         default:
             fatalError("Unknown section")
         }
     }
 
 
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if indexPath.section == 0 {
-            return false
+        if indexPath.section == 1 {
+            return true
         }
-        return true
+        return false
     }
 
     
@@ -125,6 +160,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
                 pins.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 delegate?.changedGPIOPins(pins: pins)
+                tableView.reloadData()
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -202,7 +238,14 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
             if nextNumber == 27 {
                 addPinButton.isEnabled = false
             }
+            delegate?.changedGPIOPins(pins: pins)
         }
+    }
+    
+    @IBAction func configureGPIO(_ sender: UIButton) {
+        let socket = GPIOConfigSocket(host: hostName, port: portNumber)
+        socket.delegate = self
+        socket.configureGPIO(pins: pins)
     }
     
     func nextAvailablePin() -> UInt? {
@@ -220,6 +263,7 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         return nil
     }
     
+    // MARK: GPIOPinProtocol
     
     func reloadData() {
         if let row = selectedRow {
@@ -228,4 +272,17 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol {
         delegate?.changedGPIOPins(pins: pins)
     }
 
+    // MARK: ConfigServerResponseProtocol
+    
+    func useServerResponse(response: Any) {
+        serverResponse = "\(response)"
+        if let resp = response as? [Any] {
+            if resp.count == 1 {
+                serverResponse = "\(resp[0])"
+            }
+        }
+        let indexPath = IndexPath(row: 0, section: 3)
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
 }

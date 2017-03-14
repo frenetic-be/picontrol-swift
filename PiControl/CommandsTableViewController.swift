@@ -208,9 +208,6 @@ class CommandsTableViewController: UITableViewController, UserCommandProtocol {
         if let row = selectedRow {
             CommandsTableView.reloadRows(at: [row], with: .none)
         }
-        for cmd in commands {
-            print(cmd.string())
-        }
         delegate?.changedCommands(commands: commands)
     }
         

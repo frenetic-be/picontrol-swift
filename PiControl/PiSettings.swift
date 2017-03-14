@@ -45,7 +45,7 @@ class PiSettings: NSObject, NSCoding {
                 } else {
                     selectedServer = loadedSettings.selectedServer
                 }
-                print(string())
+//                print(string())
             }
         }
     }
@@ -53,7 +53,7 @@ class PiSettings: NSObject, NSCoding {
     func save(){
         let userData = NSKeyedArchiver.archivedData(withRootObject: self)
         UserDefaults().set(userData, forKey: "PiSettings")
-        print(string())
+//        print(string())
     }
     
     func deleteAll(){
@@ -113,6 +113,8 @@ class PiServer: NSObject, NSCoding {
     /// GPIO
     var gpio: PiGPIO
 
+    /// True if the user wants to see the server response
+    var responseOn: Bool
     
     /**
      Initialization of the command.
@@ -130,6 +132,7 @@ class PiServer: NSObject, NSCoding {
         self.userCommands = PiUserCommands()
         self.anyCommand = false
         self.gpio = PiGPIO()
+        self.responseOn = false
     }
 
     func string() -> String {
@@ -146,6 +149,7 @@ class PiServer: NSObject, NSCoding {
         gpiostr.enumerateLines{ (line, stop) in
             str.append("    \(line)\n")
         }
+        str.append("    responseOn: \(responseOn)\n")
         return str
     }
 
@@ -186,6 +190,12 @@ class PiServer: NSObject, NSCoding {
             return nil
         }
         self.gpio = gpio
+
+        guard let responseOn = aDecoder.decodeObject(forKey: "responseOn") as? UInt else {
+            os_log("Unable to decode `responseOn` for a PiServer object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        self.responseOn = Bool(responseOn as NSNumber)
     }
     
     
@@ -196,6 +206,7 @@ class PiServer: NSObject, NSCoding {
         aCoder.encode(userCommands, forKey: "userCommands")
         aCoder.encode(UInt(NSNumber(value:anyCommand)), forKey: "anyCommand")
         aCoder.encode(gpio, forKey: "gpio")
+        aCoder.encode(UInt(NSNumber(value:responseOn)), forKey: "responseOn")
     }
     
 }
@@ -262,6 +273,9 @@ class PiCommand: NSObject, NSCoding {
     /// Command that will be sent to the server
     var command: String
     
+    // Command takes arguments
+    var commandHasArguments = false
+    
     /**
         Initialization of the command.
      
@@ -277,7 +291,7 @@ class PiCommand: NSObject, NSCoding {
     }
 
     func string() -> String {
-        return "Command (buttonName: \(buttonName), command: \(command))"
+        return "Command (buttonName: \(buttonName), command: \(command), has arguments: \(commandHasArguments))"
     }
 
     // MARK: NSCoding
@@ -296,12 +310,20 @@ class PiCommand: NSObject, NSCoding {
             return nil
         }
         self.command = command
+        
+        guard let commandHasArguments = aDecoder.decodeObject(forKey: "commandHasArguments") as? UInt else {
+            os_log("Unable to decode `commandHasArguments` for a PiUserCommands object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        self.commandHasArguments = Bool(commandHasArguments as NSNumber)
+        
     }
     
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(buttonName, forKey: "buttonName")
         aCoder.encode(command, forKey: "command")
+        aCoder.encode(UInt(NSNumber(value:commandHasArguments)), forKey: "commandHasArguments")
     }
     
 }

@@ -13,6 +13,7 @@ class ServerListTableViewController: UITableViewController {
 
     // MARK: Properties
     var settings = PiSettings()
+    var selectedRow: IndexPath? = nil
 
     @IBOutlet weak var addPiButton: UIBarButtonItem!
     
@@ -28,6 +29,12 @@ class ServerListTableViewController: UITableViewController {
         settings.load()
         tableView.dataSource = self
         navigationItem.leftBarButtonItem = editButtonItem
+        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,6 +125,7 @@ class ServerListTableViewController: UITableViewController {
         switch segue.identifier ?? "" {
             case "AddServer":
                 os_log("Adding a server", log:OSLog.default, type: .debug)
+                selectedRow = nil
             case "ShowServer":
                 guard let serverDetailViewController = segue.destination as? ServerConfigTableViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
@@ -128,10 +136,13 @@ class ServerListTableViewController: UITableViewController {
                 guard let indexPath = tableView.indexPath(for: selectedCell) else {
                     fatalError("The selected cell is not being displayed by the table")
                 }
+                selectedRow = indexPath
                 serverDetailViewController.currentServer = settings.servers[indexPath.row]
+            
             default:
                 fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
+        tabBarController?.tabBar.isHidden = true
     }
  
 
@@ -140,8 +151,7 @@ class ServerListTableViewController: UITableViewController {
     @IBAction func unwindToServerList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ServerConfigTableViewController {
             let currentServer = sourceViewController.currentServer
-
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            if let selectedIndexPath = selectedRow {
                 // Updating an existing server
                 settings.servers[selectedIndexPath.row] = currentServer
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
@@ -151,7 +161,6 @@ class ServerListTableViewController: UITableViewController {
                 settings.servers.append(currentServer)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
-            // print(settings!.string())
             settings.save()
         }
     }

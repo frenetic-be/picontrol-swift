@@ -17,6 +17,8 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
     // MARK: Properties
     var pin = PiGPIOPin(number: 2)
     var existingPins = [UInt]()
+    var availablePins = [UInt]()
+    var currentIndex = 0
     var nextAvailablePin: UInt = 2
     var delegate: GPIOPinProtocol?
     
@@ -25,6 +27,8 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var pinType: UISegmentedControl!
     @IBOutlet weak var pollingTextField: UITextField!
     @IBOutlet weak var pollingLabel: UILabel!
+    @IBOutlet weak var pollingStepper: UIStepper!
+    @IBOutlet weak var pinNumberStepper: UIStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +38,38 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        availablePins = [UInt]()
+        for index in 2...27 {
+            if !existingPins.contains(UInt(index)) || pin.number == UInt(index){
+                availablePins.append(UInt(index))
+            }
+        }
+        if availablePins.count == 0 {
+            pinNumberStepper.isEnabled = false
+        } else {
+            pinNumberStepper.isEnabled = true
+            pinNumberStepper.minimumValue = 0
+            pinNumberStepper.maximumValue = Double(availablePins.count-1)
+            pinNumberStepper.value = Double(availablePins.index(of: pin.number)!)
+        }
+        
         pinNumberTextField.text = "\(pin.number)"
+        
         pinNameTextField.text = pin.name
         if pin.type == .input {
             pinType.selectedSegmentIndex = 0
             pollingLabel.isEnabled = true
             pollingTextField.isEnabled = true
+            pollingStepper.isEnabled = true
         } else {
             pinType.selectedSegmentIndex = 1
             pollingLabel.isEnabled = false
             pollingTextField.isEnabled = false
+            pollingStepper.isEnabled = false
         }
         pollingTextField.text = "\(pin.polling)"
+        pollingStepper.value = Double(pin.polling)
         pinNumberTextField.delegate = self
         pinNameTextField.delegate = self
         pollingTextField.delegate = self
@@ -65,7 +89,17 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            if pin.type == .output {
+                return 1
+            }
+            return 2
+        default:
+            return 2
+        }
     }
 
     /*
@@ -156,13 +190,36 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
             // Input
             pollingLabel.isEnabled = true
             pollingTextField.isEnabled = true
+            pollingStepper.isEnabled = true
             pin.type = .input
         } else {
             // Output
             pollingLabel.isEnabled = false
             pollingTextField.isEnabled = false
+            pollingStepper.isEnabled = false
             pin.type = .output
         }
+        tableView.reloadData()
     }
 
+    @IBAction func pinNumberStepperHasChanged(_ sender: UIStepper) {
+        var pinNumber = UInt(pinNumberStepper.value)
+        print(pinNumber)
+        print(availablePins)
+        pinNumber = availablePins[Int(pinNumberStepper.value)]
+        pinNumberTextField.text = "\(pinNumber)"
+        pin.number = pinNumber
+        let regex = try! NSRegularExpression(pattern: "^GPIO-([2-9]|1\\d|2[0-7])$", options: [])
+        let match = regex.matches(in: pin.name, options: [], range: NSRange(location: 0, length: pin.name.characters.count))
+        if match.count > 0 {
+            pin.name = "GPIO-\(pinNumber)"
+            pinNameTextField.text = pin.name
+            delegate?.reloadData()
+        }
+    }
+    
+    @IBAction func pollingStepperHasChanged(_ sender: UIStepper) {
+        pollingTextField.text = "\(UInt(pollingStepper.value))"
+        pin.polling = UInt(pollingStepper.value)
+    }
 }
