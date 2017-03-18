@@ -8,20 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		4719634D1E6F750E006E6485 /* GPIOConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719634C1E6F750E006E6485 /* GPIOConfigTableViewCell.swift */; };
+		472EE8B51E7A0F7100D6DAD5 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EE8B41E7A0F7100D6DAD5 /* TutorialPageViewController.swift */; };
 		474757951E5220A100B36050 /* ServerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757941E5220A100B36050 /* ServerListTableViewController.swift */; };
 		474757971E5220CA00B36050 /* ServerConfigTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757961E5220CA00B36050 /* ServerConfigTableViewController.swift */; };
 		474757991E52550400B36050 /* CommandsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757981E52550400B36050 /* CommandsTableViewController.swift */; };
 		4747579B1E5259BA00B36050 /* MasterSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4747579A1E5259BA00B36050 /* MasterSwitchTableViewCell.swift */; };
 		4747579F1E529B5C00B36050 /* GPIOTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4747579E1E529B5C00B36050 /* GPIOTableViewController.swift */; };
 		474757A11E52E8C400B36050 /* GPIOPinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474757A01E52E8C400B36050 /* GPIOPinTableViewController.swift */; };
+		475A2B091E7C674300F85C06 /* ActiveBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2B021E7C674300F85C06 /* ActiveBuilder.swift */; };
+		475A2B0A1E7C674300F85C06 /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2B041E7C674300F85C06 /* ActiveLabel.swift */; };
+		475A2B0B1E7C674300F85C06 /* ActiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2B051E7C674300F85C06 /* ActiveType.swift */; };
+		475A2B0C1E7C674300F85C06 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 475A2B061E7C674300F85C06 /* Info.plist */; };
+		475A2B0D1E7C674300F85C06 /* RegexParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2B071E7C674300F85C06 /* RegexParser.swift */; };
+		475A2B0E1E7C674300F85C06 /* StringTrimExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475A2B081E7C674300F85C06 /* StringTrimExtension.swift */; };
 		477F30641E4F8F1000B6F671 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30631E4F8F1000B6F671 /* AppDelegate.swift */; };
-		477F30661E4F8F1000B6F671 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30651E4F8F1000B6F671 /* ViewController.swift */; };
 		477F30691E4F8F1000B6F671 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477F30671E4F8F1000B6F671 /* Main.storyboard */; };
 		477F306B1E4F8F1000B6F671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 477F306A1E4F8F1000B6F671 /* Assets.xcassets */; };
 		477F306E1E4F8F1000B6F671 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477F306C1E4F8F1000B6F671 /* LaunchScreen.storyboard */; };
 		477F30791E4F8F1000B6F671 /* PiControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30781E4F8F1000B6F671 /* PiControlTests.swift */; };
 		477F30841E4F8F1000B6F671 /* PiControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30831E4F8F1000B6F671 /* PiControlUITests.swift */; };
 		477F30941E4F953500B6F671 /* PiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30931E4F953500B6F671 /* PiSettings.swift */; };
+		478E069C1E7B391C006C03AD /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478E069B1E7B391C006C03AD /* TutorialViewController.swift */; };
 		47A6E2B01E6A47890070349E /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2AF1E6A47890070349E /* SocketIOManager.swift */; };
 		47A6E2CA1E6A480D0070349E /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2B21E6A480D0070349E /* SocketAckEmitter.swift */; };
 		47A6E2CB1E6A480D0070349E /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2B31E6A480D0070349E /* SocketAckManager.swift */; };
@@ -73,15 +80,22 @@
 
 /* Begin PBXFileReference section */
 		4719634C1E6F750E006E6485 /* GPIOConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPIOConfigTableViewCell.swift; sourceTree = "<group>"; };
+		472EE8B41E7A0F7100D6DAD5 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		474757941E5220A100B36050 /* ServerListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerListTableViewController.swift; sourceTree = "<group>"; };
 		474757961E5220CA00B36050 /* ServerConfigTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConfigTableViewController.swift; sourceTree = "<group>"; };
 		474757981E52550400B36050 /* CommandsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsTableViewController.swift; sourceTree = "<group>"; };
 		4747579A1E5259BA00B36050 /* MasterSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		4747579E1E529B5C00B36050 /* GPIOTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPIOTableViewController.swift; sourceTree = "<group>"; };
 		474757A01E52E8C400B36050 /* GPIOPinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPIOPinTableViewController.swift; sourceTree = "<group>"; };
+		475A2B021E7C674300F85C06 /* ActiveBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveBuilder.swift; sourceTree = "<group>"; };
+		475A2B031E7C674300F85C06 /* ActiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveLabel.h; sourceTree = "<group>"; };
+		475A2B041E7C674300F85C06 /* ActiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
+		475A2B051E7C674300F85C06 /* ActiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveType.swift; sourceTree = "<group>"; };
+		475A2B061E7C674300F85C06 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		475A2B071E7C674300F85C06 /* RegexParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexParser.swift; sourceTree = "<group>"; };
+		475A2B081E7C674300F85C06 /* StringTrimExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTrimExtension.swift; sourceTree = "<group>"; };
 		477F30601E4F8F1000B6F671 /* PiControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PiControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		477F30631E4F8F1000B6F671 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		477F30651E4F8F1000B6F671 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		477F30681E4F8F1000B6F671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		477F306A1E4F8F1000B6F671 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		477F306D1E4F8F1000B6F671 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +107,7 @@
 		477F30831E4F8F1000B6F671 /* PiControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiControlUITests.swift; sourceTree = "<group>"; };
 		477F30851E4F8F1000B6F671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		477F30931E4F953500B6F671 /* PiSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiSettings.swift; sourceTree = "<group>"; };
+		478E069B1E7B391C006C03AD /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		47A6E2AF1E6A47890070349E /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		47A6E2B21E6A480D0070349E /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
 		47A6E2B31E6A480D0070349E /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
@@ -150,6 +165,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		475A2B011E7C674300F85C06 /* ActiveLabel */ = {
+			isa = PBXGroup;
+			children = (
+				475A2B021E7C674300F85C06 /* ActiveBuilder.swift */,
+				475A2B031E7C674300F85C06 /* ActiveLabel.h */,
+				475A2B041E7C674300F85C06 /* ActiveLabel.swift */,
+				475A2B051E7C674300F85C06 /* ActiveType.swift */,
+				475A2B061E7C674300F85C06 /* Info.plist */,
+				475A2B071E7C674300F85C06 /* RegexParser.swift */,
+				475A2B081E7C674300F85C06 /* StringTrimExtension.swift */,
+			);
+			name = ActiveLabel;
+			path = PiControl/Source/ActiveLabel;
+			sourceTree = "<group>";
+		};
 		477F30571E4F8F1000B6F671 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +187,7 @@
 				477F30771E4F8F1000B6F671 /* PiControlTests */,
 				477F30821E4F8F1000B6F671 /* PiControlUITests */,
 				477F30611E4F8F1000B6F671 /* Products */,
+				475A2B011E7C674300F85C06 /* ActiveLabel */,
 				47A6E2B11E6A480D0070349E /* Source */,
 			);
 			sourceTree = "<group>";
@@ -175,11 +206,12 @@
 			isa = PBXGroup;
 			children = (
 				477F30631E4F8F1000B6F671 /* AppDelegate.swift */,
-				477F30651E4F8F1000B6F671 /* ViewController.swift */,
 				477F30671E4F8F1000B6F671 /* Main.storyboard */,
-				477F30931E4F953500B6F671 /* PiSettings.swift */,
 				47A6E2AF1E6A47890070349E /* SocketIOManager.swift */,
+				477F30931E4F953500B6F671 /* PiSettings.swift */,
 				477F306C1E4F8F1000B6F671 /* LaunchScreen.storyboard */,
+				472EE8B41E7A0F7100D6DAD5 /* TutorialPageViewController.swift */,
+				478E069B1E7B391C006C03AD /* TutorialViewController.swift */,
 				47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */,
 				47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */,
 				47C933D31E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift */,
@@ -356,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475A2B0C1E7C674300F85C06 /* Info.plist in Resources */,
 				477F306E1E4F8F1000B6F671 /* LaunchScreen.storyboard in Resources */,
 				477F306B1E4F8F1000B6F671 /* Assets.xcassets in Resources */,
 				477F30691E4F8F1000B6F671 /* Main.storyboard in Resources */,
@@ -385,14 +418,18 @@
 			files = (
 				47A6E2D01E6A480D0070349E /* SocketEnginePacketType.swift in Sources */,
 				47C933CC1E54F9A000B7FDDA /* UserCommandTableViewController.swift in Sources */,
+				472EE8B51E7A0F7100D6DAD5 /* TutorialPageViewController.swift in Sources */,
 				47A6E2D41E6A480D0070349E /* SocketEventHandler.swift in Sources */,
 				47A6E2B01E6A47890070349E /* SocketIOManager.swift in Sources */,
+				475A2B0D1E7C674300F85C06 /* RegexParser.swift in Sources */,
 				47A6E2D91E6A480D0070349E /* SocketIOClientSpec.swift in Sources */,
 				47A6E2D21E6A480D0070349E /* SocketEngineSpec.swift in Sources */,
 				47A6E2DE1E6A480D0070349E /* SocketStringReader.swift in Sources */,
 				47A6E2CC1E6A480D0070349E /* SocketAnyEvent.swift in Sources */,
+				475A2B091E7C674300F85C06 /* ActiveBuilder.swift in Sources */,
 				4747579F1E529B5C00B36050 /* GPIOTableViewController.swift in Sources */,
 				47A6E2CA1E6A480D0070349E /* SocketAckEmitter.swift in Sources */,
+				475A2B0A1E7C674300F85C06 /* ActiveLabel.swift in Sources */,
 				474757951E5220A100B36050 /* ServerListTableViewController.swift in Sources */,
 				47C933D41E55457B00B7FDDA /* DashboardAnyCommandTableViewCell.swift in Sources */,
 				47A6E2CF1E6A480D0070349E /* SocketEngineClient.swift in Sources */,
@@ -400,14 +437,16 @@
 				4747579B1E5259BA00B36050 /* MasterSwitchTableViewCell.swift in Sources */,
 				47A6E2DF1E6A480D0070349E /* SocketTypes.swift in Sources */,
 				47C933D01E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift in Sources */,
-				477F30661E4F8F1000B6F671 /* ViewController.swift in Sources */,
 				47A6E2D11E6A480D0070349E /* SocketEnginePollable.swift in Sources */,
+				475A2B0B1E7C674300F85C06 /* ActiveType.swift in Sources */,
 				474757971E5220CA00B36050 /* ServerConfigTableViewController.swift in Sources */,
 				47A6E2CD1E6A480D0070349E /* SocketClientManager.swift in Sources */,
+				478E069C1E7B391C006C03AD /* TutorialViewController.swift in Sources */,
 				47C933D61E55525200B7FDDA /* DashboardGPIOTableViewCell.swift in Sources */,
 				47A6E2E11E6A480D0070349E /* WebSocket.swift in Sources */,
 				47A6E2DD1E6A480D0070349E /* SocketParsable.swift in Sources */,
 				47A6E2DB1E6A480D0070349E /* SocketLogger.swift in Sources */,
+				475A2B0E1E7C674300F85C06 /* StringTrimExtension.swift in Sources */,
 				477F30941E4F953500B6F671 /* PiSettings.swift in Sources */,
 				47C933CE1E55326F00B7FDDA /* DashboardTableViewController.swift in Sources */,
 				47A6E2E01E6A480D0070349E /* SSLSecurity.swift in Sources */,

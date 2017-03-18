@@ -204,8 +204,6 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func pinNumberStepperHasChanged(_ sender: UIStepper) {
         var pinNumber = UInt(pinNumberStepper.value)
-        print(pinNumber)
-        print(availablePins)
         pinNumber = availablePins[Int(pinNumberStepper.value)]
         pinNumberTextField.text = "\(pinNumber)"
         pin.number = pinNumber

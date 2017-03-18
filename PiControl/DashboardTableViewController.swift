@@ -33,8 +33,9 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         settings.load()
-        establishConnection()
+        // establishConnection()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.socket = socket
         
@@ -47,11 +48,14 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // Reconnecting socket connection when coming from settings view
         settings.load()
         dashboardTableView.reloadData()
-        establishConnection()
+        let hasShownTutorial = UserDefaults().bool(forKey: "hasShownTutorial")
+        if hasShownTutorial {
+            establishConnection()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +63,17 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         
         // Closing socket connection when going to settings view
         socket.closeConnection()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Show tutorial
+        let hasShownTutorial = UserDefaults().bool(forKey: "hasShownTutorial")
+        if !hasShownTutorial {
+            performSegue(withIdentifier: "ShowTutorialSegue", sender: self)
+        }
+        UserDefaults().set(true, forKey: "hasShownTutorial")
     }
 
     override func didReceiveMemoryWarning() {
@@ -499,11 +514,15 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         // Add connection code to UserDefaults
         addConnectionCode()
         
-        // Start probing GPIO input pins
-        socket.startProbingInputPins()
+        if let server = settings.selectedServer {
+            if server.gpio.isOn {
+                // Start probing GPIO input pins
+                socket.startProbingInputPins()
 
-        // Get state of GPIO pins
-        socket.getAllGPIO()
+                // Get state of GPIO pins
+                socket.getAllGPIO()
+            }
+        }
         
         // Stops refreshing
         refreshControl?.endRefreshing()

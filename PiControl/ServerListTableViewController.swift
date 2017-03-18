@@ -64,6 +64,7 @@ class ServerListTableViewController: UITableViewController {
         let server = settings.servers[indexPath.row]
         if let label = cell.textLabel {
             let selectedServer = settings.selectedServer ?? settings.servers[0]
+            // Add a checkmark next to selected server
             if server == selectedServer {
                 label.text = "\u{2713}  \(server.name)"
             } else {
@@ -83,9 +84,16 @@ class ServerListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            // if the selected server is deleted, select another server
+            if settings.selectedServer == settings.servers[indexPath.row] && settings.servers.count > 1 {
+                settings.selectedServer = settings.servers[0]
+            }
+            
             // Delete the row from the data source
             settings.servers.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            // tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
             settings.save()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
