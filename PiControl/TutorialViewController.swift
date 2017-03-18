@@ -115,8 +115,8 @@ class TutorialViewController: UIViewController, UITextFieldDelegate {
             } else {
                 destination.selectedIndex = 0
             }
-            UserDefaults().set(true, forKey: "hasShownTutorial")
         }
+        UserDefaults().set(true, forKey: "hasShownTutorial")
     }
 
     

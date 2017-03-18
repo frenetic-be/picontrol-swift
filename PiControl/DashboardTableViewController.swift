@@ -73,7 +73,6 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         if !hasShownTutorial {
             performSegue(withIdentifier: "ShowTutorialSegue", sender: self)
         }
-        UserDefaults().set(true, forKey: "hasShownTutorial")
     }
 
     override func didReceiveMemoryWarning() {
