@@ -43,7 +43,12 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         if let bounds = refreshControl?.bounds {
             refreshControl?.bounds = CGRect(x: bounds.origin.x, y: -10, width: bounds.width, height: bounds.height)
         }
+        
+        // Tap anywhere to dismiss the keyboard
+        self.hideKeyboardWhenTappedAround()
 
+        // Set tabbar accessibility identifier
+        self.tabBarController?.tabBar.accessibilityIdentifier = "Dashboard"
     }
     
     override func viewWillAppear(_ animated: Bool) {

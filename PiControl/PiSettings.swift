@@ -13,7 +13,7 @@ import os.log
 /**
  Class representing the user settings
  */
-class PiSettings: NSObject, NSCoding {
+class PiSettings: NSObject, NSCoding, NSCopying {
     
     /// List of servers
     var servers = [PiServer]()
@@ -40,7 +40,10 @@ class PiSettings: NSObject, NSCoding {
                 for server in loadedSettings.servers {
                     servers.append(server)
                 }
-                if servers.count == 1 {
+                if servers.count == 0 {
+                    selectedServer = nil
+                }
+                else if servers.count == 1 {
                     selectedServer = servers[0]
                 } else {
                     selectedServer = loadedSettings.selectedServer
@@ -85,13 +88,32 @@ class PiSettings: NSObject, NSCoding {
         aCoder.encode(selectedServer, forKey: "selectedServer")
     }
     
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiSettings()
+        var servercopy = PiServer(name: "greg", hostName: "gregre", port: 3000)
+        for server in servers {
+            servercopy = server.copy() as! PiServer
+            if selectedServer == server {
+                copy.selectedServer = servercopy
+            }
+            copy.servers.append(servercopy)
+        }
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiSettings, rhs: PiSettings) -> Bool{
+        return lhs.string() == rhs.string()
+    }
+    
 }
 
 
 /**
  Class representing a server
  */
-class PiServer: NSObject, NSCoding {
+class PiServer: NSObject, NSCoding, NSCopying {
     
     // MARK: Properties
     
@@ -208,6 +230,21 @@ class PiServer: NSObject, NSCoding {
         aCoder.encode(gpio, forKey: "gpio")
         aCoder.encode(UInt(NSNumber(value:responseOn)), forKey: "responseOn")
     }
+
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiServer(name: name, hostName: hostName, port: port)
+        copy.anyCommand = anyCommand
+        copy.responseOn = responseOn
+        copy.gpio = gpio.copy() as! PiGPIO
+        copy.userCommands = userCommands.copy() as! PiUserCommands
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiServer, rhs: PiServer) -> Bool{
+        return lhs.string() == rhs.string()
+    }
     
 }
 
@@ -215,7 +252,7 @@ class PiServer: NSObject, NSCoding {
 /**
  Class representing User-defined commands
  */
-class PiUserCommands: NSObject, NSCoding {
+class PiUserCommands: NSObject, NSCoding, NSCopying {
     
     /// Is the master switch on?
     var isOn: Bool = false
@@ -257,13 +294,30 @@ class PiUserCommands: NSObject, NSCoding {
         aCoder.encode(commands, forKey: "commands")
     }
     
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiUserCommands()
+        copy.isOn = isOn
+        var cmdcopy = PiCommand(buttonName: "blah")
+        for cmd in commands {
+            cmdcopy = cmd.copy() as! PiCommand
+            copy.commands.append(cmdcopy)
+        }
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiUserCommands, rhs: PiUserCommands) -> Bool{
+        return lhs.string() == rhs.string()
+    }
+    
 }
 
 
 /**
  Class representing a user-defined command that will be sent to the server
  */
-class PiCommand: NSObject, NSCoding {
+class PiCommand: NSObject, NSCoding, NSCopying {
 
     // MARK: Properties
     
@@ -326,13 +380,26 @@ class PiCommand: NSObject, NSCoding {
         aCoder.encode(UInt(NSNumber(value:commandHasArguments)), forKey: "commandHasArguments")
     }
     
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiCommand(buttonName: buttonName)
+        copy.commandHasArguments = commandHasArguments
+        copy.command = command
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiCommand, rhs: PiCommand) -> Bool{
+        return lhs.string() == rhs.string()
+    }
+    
 }
 
 
 /**
  Class representing GPIO preferences
  */
-class PiGPIO: NSObject, NSCoding {
+class PiGPIO: NSObject, NSCoding, NSCopying {
     
     /// Is the master switch on?
     var isOn: Bool = false
@@ -374,15 +441,32 @@ class PiGPIO: NSObject, NSCoding {
         aCoder.encode(pins, forKey: "pins")
     }
     
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiGPIO()
+        var pincopy: PiGPIOPin
+        copy.isOn = isOn
+        for pin in pins {
+            pincopy = pin.copy() as! PiGPIOPin
+            copy.pins.append(pincopy)
+        }
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiGPIO, rhs: PiGPIO) -> Bool{
+        return lhs.string() == rhs.string()
+    }
+    
 }
+
 
 
 /**
     Class representing GPIO pins
 */
-class PiGPIOPin: NSObject, NSCoding {
+class PiGPIOPin: NSObject, NSCoding, NSCopying {
     
-    // MARK: Properties
     
     /// The pin number (must be between 2 and 28)
     var number: UInt
@@ -457,6 +541,20 @@ class PiGPIOPin: NSObject, NSCoding {
         aCoder.encode(number, forKey: "number")
         aCoder.encode(type.toInt(), forKey: "pinType")
         aCoder.encode(polling, forKey: "polling")
+    }
+    
+    // MARK: NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PiGPIOPin(number: number)
+        copy.name = name
+        copy.polling = polling
+        copy.type = type
+        return copy
+    }
+    
+    // MARK:  Equatable
+    public static func ==(lhs: PiGPIOPin, rhs: PiGPIOPin) -> Bool{
+        return lhs.string() == rhs.string()
     }
 }
 

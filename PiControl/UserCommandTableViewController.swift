@@ -12,7 +12,7 @@ protocol UserCommandProtocol {
     func reloadData()
 }
 
-class UserCommandTableViewController: UITableViewController {
+class UserCommandTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: Properties
     var command = PiCommand(buttonName: "")
@@ -30,11 +30,22 @@ class UserCommandTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        buttonNameTextField.delegate = self
+        commandStringTextField.delegate = self
+        
         buttonNameTextField.text = command.buttonName
         commandStringTextField.text = command.command
         commandHasArgumentsSwitch.isOn = command.commandHasArguments
+        
+        if command.command.isEmpty {
+            disableBackButton()
+        }
+        
+        // Tap anywhere to dismiss the keyboard
+        self.hideKeyboardWhenTappedAround()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -97,26 +108,96 @@ class UserCommandTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print("leaving")
     }
-    */
+     */
+ 
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case buttonNameTextField:
+            commandStringTextField.becomeFirstResponder()
+        case commandStringTextField:
+            dismissKeyboard()
+        default:
+            return true
+        }
+        return true
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func buttonHasChanged(_ sender: UITextField) {
         command.buttonName = sender.text ?? ""
         delegate?.reloadData()
+        if command.command.isEmpty {
+            if command.buttonName.isEmpty {
+                self.title = "New Command"
+            } else {
+                self.title = command.buttonName
+            }
+        }
     }
 
     @IBAction func commandHasChanged(_ sender: UITextField) {
         command.command = sender.text ?? ""
+        if command.command.isEmpty {
+            disableBackButton()
+            showAlert(message: "The command cannot be empty")
+        } else {
+            enableBackButton()
+        }
         delegate?.reloadData()
     }
 
+    @IBAction func commandIsBeingEdited(_ sender: UITextField) {
+        if (sender.text ?? "").isEmpty {
+            disableBackButton()
+        } else {
+            enableBackButton()
+        }
+    }
+    
+    
     @IBAction func hasArgumentsChanged(_ sender: UISwitch) {
         command.commandHasArguments = sender.isOn
     }
+    
+    func showAlert(message: String, title:String="Error") {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func disableBackButton(){
+        // navigationController?.navigationBar.isUserInteractionEnabled = false
+        // navigationController?.navigationBar.tintColor = UIColor.lightGray
+        navigationItem.hidesBackButton = true
+        if command.buttonName.isEmpty {
+            self.title = "New Command"
+        } else {
+            self.title = command.buttonName
+        }
+    }
+    func enableBackButton(){
+        // navigationController?.navigationBar.isUserInteractionEnabled = true
+        // navigationController?.navigationBar.tintColor = self.view.tintColor
+        navigationItem.hidesBackButton = false
+        self.title = ""
+    }
+
 }

@@ -30,6 +30,7 @@ class ServerListTableViewController: UITableViewController {
         tableView.dataSource = self
         navigationItem.leftBarButtonItem = editButtonItem
         
+        self.tabBarController?.tabBar.accessibilityIdentifier = "Settings"
 
     }
     

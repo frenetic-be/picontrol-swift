@@ -12,7 +12,7 @@ import os.log
 class ServerConfigTableViewController: UITableViewController, UITextFieldDelegate, GPIOProtocol, UserCommandsProtocol {
 
     // MARK: Properties
-    var currentServer = PiServer(name: "", hostName: "localhost", port: 3000)
+    var currentServer = PiServer(name: "", hostName: "http://yourpi.local", port: 3000)
 
     @IBOutlet weak var serverNameTextField: UITextField!
     @IBOutlet weak var hostNameTextField: UITextField!
@@ -34,6 +34,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
 
         serverNameTextField.delegate = self
         hostNameTextField.delegate = self
+        portNumberTextField.delegate = self
         
         if currentServer.name.isEmpty {
             navigationItem.title = "New Pi"
@@ -47,6 +48,10 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
         portNumberTextField.text = "\(currentServer.port)"
         anyCommandSwitch.isOn = currentServer.anyCommand
         responseOnSwitch.isOn = currentServer.responseOn
+        
+        // Tap anywhere to dismiss the keyboard
+        self.hideKeyboardWhenTappedAround()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -157,6 +162,22 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
             currentServer.responseOn = responseOnSwitch.isOn
         }
 
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case serverNameTextField:
+            hostNameTextField.becomeFirstResponder()
+        case hostNameTextField:
+            portNumberTextField.becomeFirstResponder()
+        case portNumberTextField:
+            dismissKeyboard()
+        default:
+            return true
+        }
+        return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {

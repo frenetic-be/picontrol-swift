@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor(red: 70/255.0, green: 130/255.0, blue: 180/255.0, alpha: 1.0)
         
         // Uncomment this to always show the tutorial pages at the start of the app
-        // UserDefaults().set(false, forKey: "hasShownTutorial")
+         UserDefaults().set(false, forKey: "hasShownTutorial")
         
         // Uncomment this next block to delete all user data and start from a clean slate
 //         if let bundle = Bundle.main.bundleIdentifier {
@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     

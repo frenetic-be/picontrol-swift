@@ -73,6 +73,9 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
         pinNumberTextField.delegate = self
         pinNameTextField.delegate = self
         pollingTextField.delegate = self
+        
+        // Tap anywhere to dismiss the keyboard
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -157,7 +160,8 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
     }
     */
  
-    // MARK: TextFieldDelegate
+    // MARK: UITextFieldDelegate
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case pinNumberTextField:
@@ -182,6 +186,16 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
         default:
             return
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case pinNameTextField:
+            dismissKeyboard()
+        default:
+            return true
+        }
+        return true
     }
     
     // MARK: Actions

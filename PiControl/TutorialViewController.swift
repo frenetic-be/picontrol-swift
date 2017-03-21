@@ -196,6 +196,12 @@ class TutorialViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        // Check that the command is valid
+        if command.isEmpty {
+            showAlert(message: "The command cannot be empty")
+            return
+        }
+        
         // Load settings
         let settings = PiSettings()
         settings.load()

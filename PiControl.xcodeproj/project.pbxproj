@@ -246,7 +246,7 @@
 				477F30851E4F8F1000B6F671 /* Info.plist */,
 			);
 			path = PiControlUITests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		47A6E2B11E6A480D0070349E /* Source */ = {
 			isa = PBXGroup;
