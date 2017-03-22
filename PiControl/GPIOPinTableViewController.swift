@@ -32,6 +32,7 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -73,6 +74,10 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
         pinNumberTextField.delegate = self
         pinNameTextField.delegate = self
         pollingTextField.delegate = self
+        
+        pinNumberStepper.accessibilityIdentifier = "GPIOPinNumberStepper"
+        pollingStepper.accessibilityIdentifier = "GPIOPinPollingStepper"
+        pinType.accessibilityIdentifier = "GPIOPinTypeControl"
         
         // Tap anywhere to dismiss the keyboard
         self.hideKeyboardWhenTappedAround()

@@ -120,6 +120,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hX-Pl-ANs">
                                                     <rect key="frame" x="0.0" y="0.0" width="83.5" height="30"/>
                                                     <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardLeftCommandButton"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                                     <state key="normal" title="Left">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -131,6 +132,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhx-57-oHN">
                                                     <rect key="frame" x="98.5" y="0.0" width="83" height="30"/>
                                                     <color key="backgroundColor" red="0.27450980392156865" green="0.50980392156862742" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardCenterCommandButton"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                                     <state key="normal" title="Center">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,6 +144,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JR-1G-N8e">
                                                     <rect key="frame" x="196.5" y="0.0" width="83.5" height="30"/>
                                                     <color key="backgroundColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardRightCommandButton"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                                     <state key="normal" title="Right">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +162,7 @@
                                         <constraint firstItem="NVF-l9-moW" firstAttribute="top" secondItem="a7X-px-vSO" secondAttribute="top" constant="7" id="v0r-Cv-9ja"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="DashboardCommandTableViewCell"/>
                                 <connections>
                                     <outlet property="centralButton" destination="Uhx-57-oHN" id="J0s-js-vcM"/>
                                     <outlet property="leftButton" destination="0hX-Pl-ANs" id="Cf6-85-9IW"/>
@@ -177,12 +181,14 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Command to send" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyz-se-wK0">
                                                     <rect key="frame" x="0.0" y="0.0" width="236" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardAnyCommandTextField"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="send"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3a-LB-J9p">
                                                     <rect key="frame" x="244" y="0.0" width="36" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardAnyCommandSendButton"/>
                                                     <state key="normal" title="Send">
                                                         <color key="titleColor" red="0.27450980392156865" green="0.50980392156862742" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
@@ -199,6 +205,7 @@
                                         <constraint firstAttribute="trailing" secondItem="d3L-fb-elC" secondAttribute="trailing" constant="20" id="sPO-bo-1KZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="DashboardAnyCommandTableViewCell"/>
                                 <connections>
                                     <outlet property="commandTextField" destination="hyz-se-wK0" id="K1y-Qe-NDw"/>
                                 </connections>
@@ -215,12 +222,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0a-Gz-Zp1">
                                                     <rect key="frame" x="0.0" y="0.0" width="223" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardGPIOLabel"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j2k-pn-6Bw">
                                                     <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="DashboardGPIOSwitch"/>
                                                     <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <connections>
                                                         <action selector="GPIOSwitchHasChanged:" destination="RF2-8l-rf5" eventType="valueChanged" id="XPl-YK-IAB"/>
@@ -236,6 +245,7 @@
                                         <constraint firstAttribute="trailing" secondItem="Q93-lR-LXW" secondAttribute="trailing" constant="20" id="uLj-KL-3yR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="DashboardGPIOTableViewCell"/>
                                 <connections>
                                     <outlet property="GPIOLabel" destination="b0a-Gz-Zp1" id="P9Y-CI-BTK"/>
                                     <outlet property="GPIOSwitch" destination="j2k-pn-6Bw" id="pgV-yb-pv3"/>
@@ -251,12 +261,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sjd-Qz-xZp">
                                             <rect key="frame" x="15" y="0.0" width="290" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="DashboardServerResponseLabel"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="DashboardServerResponseTableViewCell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -299,6 +311,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1De-2m-IQD">
                                             <rect key="frame" x="15" y="0.0" width="238" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="ServerListLabel"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -373,12 +386,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R69-xl-cWs">
                                                             <rect key="frame" x="0.0" y="0.0" width="95.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigServerNameLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="A name for your Pi" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4yg-zG-Lwj">
                                                             <rect key="frame" x="103.5" y="0.0" width="176.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigServerNameTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -392,6 +407,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="HJp-ac-XuQ" secondAttribute="trailing" constant="20" id="mCi-0k-PFG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigServerNameTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3id-Tx-onJ">
                                         <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
@@ -405,12 +421,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rl-GQ-yA3">
                                                             <rect key="frame" x="0.0" y="0.0" width="100.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigHostAddressLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://yourpi.local" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEk-sp-8ha">
                                                             <rect key="frame" x="108.5" y="0.0" width="171.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigHostAddressTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -424,6 +442,7 @@
                                                 <constraint firstItem="jAt-ia-Xya" firstAttribute="top" secondItem="b0o-KB-kKN" secondAttribute="top" constant="10" id="tbH-xA-luF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigHostAddressTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Qp1-FP-RwM">
                                         <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
@@ -437,12 +456,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Port number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF7-Gb-Ncc">
                                                             <rect key="frame" x="0.0" y="0.0" width="94.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigPortNumberLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3000" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mae-qH-Xhr">
                                                             <rect key="frame" x="102.5" y="0.0" width="177.5" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigPortNumberTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -456,6 +477,7 @@
                                                 <constraint firstItem="rfa-g7-rbB" firstAttribute="top" secondItem="RHV-8L-aJQ" secondAttribute="top" constant="10" id="siH-je-etC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigPortNumberTableViewCell"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -471,12 +493,14 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User-defined commands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Za6-4M-lkZ">
                                                     <rect key="frame" x="20" y="11" width="191" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="ConfigUserCommandsLabel"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigUserCommandsTableViewCell"/>
                                         <connections>
                                             <segue destination="yOu-AS-XnF" kind="show" identifier="ShowUserCommands" id="H7s-mY-Jdy"/>
                                         </connections>
@@ -493,12 +517,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field for free commands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHc-ni-iA7">
                                                             <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigAnyCommandLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CL2-Dm-CZc">
                                                             <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigAnyCommandSwitch"/>
                                                             <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </switch>
                                                     </subviews>
@@ -510,6 +536,7 @@
                                                 <constraint firstItem="Qjt-QA-ZnZ" firstAttribute="leading" secondItem="YVb-JY-tfX" secondAttribute="leading" constant="20" id="zHl-1d-hm7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigAnyCommandTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lsI-ig-Be7">
                                         <rect key="frame" x="0.0" y="331.5" width="320" height="44"/>
@@ -521,12 +548,14 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GPIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4Q-oV-5PB">
                                                     <rect key="frame" x="20" y="11" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="ConfigGPIOLabel"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigGPIOTableViewCell"/>
                                         <connections>
                                             <segue destination="ACa-cr-4yC" kind="show" identifier="ShowGPIO" id="2oa-Lp-bxJ"/>
                                         </connections>
@@ -543,12 +572,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server response" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-PL-XVH">
                                                             <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigServerResponseLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SyJ-2R-5tG">
                                                             <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="ConfigServerResponseSwitch"/>
                                                             <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </switch>
                                                     </subviews>
@@ -560,6 +591,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="nNQ-lV-Fa4" secondAttribute="trailing" constant="20" id="nfi-zX-aBE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ConfigServerResponseTableViewCell"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -636,12 +668,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCk-Mg-Chu">
                                                     <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="GPIOMasterSwitchLabel"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoV-x7-dMI">
                                                     <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="GPIOMasterSwitch"/>
                                                     <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="toggleMainSwitch:" destination="ACa-cr-4yC" eventType="valueChanged" id="Srf-Zf-2LD"/>
@@ -656,6 +690,7 @@
                                         <constraint firstItem="iGS-0X-jhK" firstAttribute="leading" secondItem="XZ8-y3-vbi" secondAttribute="leading" constant="20" id="Ycd-z8-3Rc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="GPIOMasterSwitchTableViewCell"/>
                                 <connections>
                                     <outlet property="label" destination="eCk-Mg-Chu" id="bAL-An-2om"/>
                                     <outlet property="switch" destination="PoV-x7-dMI" id="tSN-TO-ku3"/>
@@ -671,12 +706,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="flZ-yu-5zy">
                                             <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinsLabel"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="GPIOPinsTableViewCell"/>
                                 <connections>
                                     <segue destination="YY3-Mi-L5x" kind="show" identifier="ShowGPIOPin" id="VQC-72-vV4"/>
                                 </connections>
@@ -691,6 +728,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vdc-0X-XI0">
                                             <rect key="frame" x="107" y="7" width="107" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="GPIOConfigButton"/>
                                             <state key="normal" title="Configure GPIO"/>
                                             <connections>
                                                 <action selector="configureGPIO:" destination="ACa-cr-4yC" eventType="touchUpInside" id="liA-GG-Bk7"/>
@@ -698,6 +736,7 @@
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="GPIOConfigTableViewCell"/>
                                 <connections>
                                     <outlet property="configButton" destination="Vdc-0X-XI0" id="jie-36-LIH"/>
                                 </connections>
@@ -712,12 +751,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rGX-lO-3gn">
                                             <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="GPIOConfigStatusLabel"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="GPIOConfigStatusTableViewCell"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -764,12 +805,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnJ-rY-mTP">
                                                             <rect key="frame" x="0.0" y="0.0" width="86.5" height="29"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinNumberLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="number" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rjg-SE-dGN">
                                                             <rect key="frame" x="98.5" y="0.0" width="75.5" height="29"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinNumberTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -789,6 +832,7 @@
                                                 <constraint firstItem="OHp-04-MZz" firstAttribute="leading" secondItem="gpS-XT-FfZ" secondAttribute="leading" constant="20" id="uQ4-vs-deH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="GPIOPinNumberTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="G2d-ko-wOa">
                                         <rect key="frame" x="0.0" y="79" width="320" height="44"/>
@@ -802,12 +846,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOY-e0-ywZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="70" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinNameLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pin name, e.g. Sensor" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sp1-YS-vcf">
                                                             <rect key="frame" x="78" y="0.0" width="202" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinNameTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -821,6 +867,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="ORk-RE-TRq" secondAttribute="trailing" constant="20" id="pWw-jE-KUX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="GPIOPinNameTableViewCell"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -856,6 +903,7 @@
                                                 <constraint firstItem="C4s-td-pS6" firstAttribute="leading" secondItem="gME-Ns-QEi" secondAttribute="leading" constant="20" id="bI4-hg-NKX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="GPIOPinTypeTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xeN-Y1-Lkd">
                                         <rect key="frame" x="0.0" y="203" width="320" height="44"/>
@@ -869,12 +917,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Polling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJn-9w-wm2">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="29"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinPollingLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Polling" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IYF-Op-5L7">
                                                             <rect key="frame" x="62" y="0.0" width="112" height="29"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="GPIOPinPollingTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -894,6 +944,7 @@
                                                 <constraint firstItem="2LY-Wp-oee" firstAttribute="top" secondItem="hE5-zD-OpT" secondAttribute="top" constant="7" id="MYA-Xv-gXW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="GPIOPinPollingTableViewCell"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -938,12 +989,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A92-CK-e48">
                                                     <rect key="frame" x="0.0" y="0.0" width="231" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="UserCommandsMasterSwitchLabel"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="atr-hH-Bsx">
                                                     <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="UserCommandsMasterSwitch"/>
                                                     <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="toggleMainSwitch:" destination="yOu-AS-XnF" eventType="valueChanged" id="23W-SY-AYQ"/>
@@ -958,6 +1011,7 @@
                                         <constraint firstItem="Zro-UL-WNh" firstAttribute="leading" secondItem="S6i-3X-5xr" secondAttribute="leading" constant="20" id="aCj-ZB-x6r"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="UserCommandsMasterSwitchTableViewCell"/>
                                 <connections>
                                     <outlet property="label" destination="A92-CK-e48" id="ALN-i8-bgG"/>
                                     <outlet property="switch" destination="atr-hH-Bsx" id="Hdg-LW-1o5"/>
@@ -973,12 +1027,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ses-5S-n1H">
                                             <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandsLabel"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="UserCommandsTableViewCell"/>
                                 <connections>
                                     <segue destination="T2C-LL-4VN" kind="show" identifier="ShowCommand" id="Vuk-tF-dia">
                                         <nil key="action"/>
@@ -1031,12 +1087,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Button name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6a-4E-a1g">
                                                             <rect key="frame" x="0.0" y="0.0" width="97" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigButtonNameLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name on the button" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kp-QG-2bu">
                                                             <rect key="frame" x="105" y="0.0" width="175" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigButtonNameTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -1053,6 +1111,7 @@
                                                 <constraint firstItem="Tcg-82-BQY" firstAttribute="leading" secondItem="MLM-8L-CWm" secondAttribute="leading" constant="20" id="mez-dZ-v4F"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigButtonNameTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="SKn-GM-JvP">
                                         <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
@@ -1066,12 +1125,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Command string" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myW-Xc-sDQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="126" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigCommandLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="String to send" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kdR-3t-rgW">
                                                             <rect key="frame" x="134" y="0.0" width="146" height="20.5"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigCommandTextField"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -1089,6 +1150,7 @@
                                                 <constraint firstItem="uxX-6i-eX3" firstAttribute="leading" secondItem="mP7-9b-5S0" secondAttribute="leading" constant="20" id="TBZ-ez-Hcp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigCommandTableViewCell"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="UpJ-DS-g2P">
                                         <rect key="frame" x="0.0" y="143.5" width="320" height="44"/>
@@ -1102,12 +1164,14 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Command has arguments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjY-NO-XfJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="223" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigArgumentsLabel"/>
                                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9HA-F4-99i">
                                                             <rect key="frame" x="231" y="0.0" width="51" height="31"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigArgumentsSwitch"/>
                                                             <color key="onTintColor" red="0.27450980390000002" green="0.50980392159999999" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
                                                                 <action selector="hasArgumentsChanged:" destination="T2C-LL-4VN" eventType="valueChanged" id="Am8-lN-9bv"/>
@@ -1122,6 +1186,7 @@
                                                 <constraint firstItem="kyZ-6k-voG" firstAttribute="top" secondItem="b9z-7W-ap8" secondAttribute="top" constant="7" id="oMP-Zz-dCi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="UserCommandConfigArgumentsTableViewCell"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
