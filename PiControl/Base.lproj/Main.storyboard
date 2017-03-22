@@ -1360,6 +1360,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="serverName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Any name you like" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UcY-p2-z0r">
                                                         <rect key="frame" x="111" y="0.0" width="169" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TutorialServerNameTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="169" id="7Rs-dv-mYj"/>
                                                         </constraints>
@@ -1380,6 +1381,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="hostAddress" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://yourserver.local" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2gc-he-2Gh">
                                                         <rect key="frame" x="111" y="0.0" width="169" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TutorialHostAddressTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="169" id="NyL-e2-1he"/>
                                                         </constraints>
@@ -1400,6 +1402,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="portNumber" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. 1234" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e3y-LT-4Z7">
                                                         <rect key="frame" x="111" y="0.0" width="169" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TutorialPortNumberTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="169" id="Eqy-OQ-PHq"/>
                                                         </constraints>
@@ -1413,6 +1416,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-EQ-sbb">
                                         <rect key="frame" x="102" y="350.5" width="76" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TutorialAddServerButton"/>
                                         <state key="normal" title="Add Server">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1610,6 +1614,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="buttonName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Any name you like" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J0Q-s8-Z3G">
                                                         <rect key="frame" x="111" y="0.0" width="169" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TutorialButtonNameTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="169" id="lgO-Kq-fDq"/>
                                                         </constraints>
@@ -1630,6 +1635,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="command" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="the command to send" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSX-Dx-OAI">
                                                         <rect key="frame" x="111" y="0.0" width="169" height="30"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="TutorialCommandTextField"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="169" id="YD8-gK-q8s"/>
                                                         </constraints>
@@ -1643,6 +1649,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRe-4G-QqC">
                                         <rect key="frame" x="101" y="386" width="78" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TutorialAddButtonButton"/>
                                         <state key="normal" title="Add Button">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>

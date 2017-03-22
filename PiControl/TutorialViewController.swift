@@ -41,7 +41,6 @@ class TutorialViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         switch restorationIdentifier ?? "" {
         case "TutorialPage2":
             let customType = ActiveType.custom(pattern: "\\sthis Python program\\b") //Looks for "are"
@@ -192,13 +191,13 @@ class TutorialViewController: UIViewController, UITextFieldDelegate {
         
         // Check that the command is valid 
         if command.range(of: " ") != nil {
-            showAlert(message: "That command is not valid")
+            showAlert(message: "That command is not valid.")
             return
         }
         
         // Check that the command is valid
         if command.isEmpty {
-            showAlert(message: "The command cannot be empty")
+            showAlert(message: "The command cannot be empty.")
             return
         }
         

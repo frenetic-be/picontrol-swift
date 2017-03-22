@@ -26,7 +26,7 @@
 		477F306B1E4F8F1000B6F671 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 477F306A1E4F8F1000B6F671 /* Assets.xcassets */; };
 		477F306E1E4F8F1000B6F671 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477F306C1E4F8F1000B6F671 /* LaunchScreen.storyboard */; };
 		477F30791E4F8F1000B6F671 /* PiControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30781E4F8F1000B6F671 /* PiControlTests.swift */; };
-		477F30841E4F8F1000B6F671 /* PiControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30831E4F8F1000B6F671 /* PiControlUITests.swift */; };
+		477F30841E4F8F1000B6F671 /* PiControlTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30831E4F8F1000B6F671 /* PiControlTutorialUITests.swift */; };
 		477F30941E4F953500B6F671 /* PiSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477F30931E4F953500B6F671 /* PiSettings.swift */; };
 		478E069C1E7B391C006C03AD /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478E069B1E7B391C006C03AD /* TutorialViewController.swift */; };
 		47A6E2B01E6A47890070349E /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2AF1E6A47890070349E /* SocketIOManager.swift */; };
@@ -54,6 +54,7 @@
 		47A6E2DF1E6A480D0070349E /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2C71E6A480D0070349E /* SocketTypes.swift */; };
 		47A6E2E01E6A480D0070349E /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2C81E6A480D0070349E /* SSLSecurity.swift */; };
 		47A6E2E11E6A480D0070349E /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A6E2C91E6A480D0070349E /* WebSocket.swift */; };
+		47C0ACEF1E82FC50006ACF33 /* PiControlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C0ACEE1E82FC50006ACF33 /* PiControlUITests.swift */; };
 		47C933CC1E54F9A000B7FDDA /* UserCommandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CB1E54F9A000B7FDDA /* UserCommandTableViewController.swift */; };
 		47C933CE1E55326F00B7FDDA /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */; };
 		47C933D01E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */; };
@@ -104,7 +105,7 @@
 		477F30781E4F8F1000B6F671 /* PiControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiControlTests.swift; sourceTree = "<group>"; };
 		477F307A1E4F8F1000B6F671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		477F307F1E4F8F1000B6F671 /* PiControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PiControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		477F30831E4F8F1000B6F671 /* PiControlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiControlUITests.swift; sourceTree = "<group>"; };
+		477F30831E4F8F1000B6F671 /* PiControlTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiControlTutorialUITests.swift; sourceTree = "<group>"; };
 		477F30851E4F8F1000B6F671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		477F30931E4F953500B6F671 /* PiSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiSettings.swift; sourceTree = "<group>"; };
 		478E069B1E7B391C006C03AD /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		47A6E2C71E6A480D0070349E /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		47A6E2C81E6A480D0070349E /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
 		47A6E2C91E6A480D0070349E /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		47C0ACEE1E82FC50006ACF33 /* PiControlUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PiControlUITests.swift; sourceTree = "<group>"; };
 		47C933CB1E54F9A000B7FDDA /* UserCommandTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCommandTableViewController.swift; sourceTree = "<group>"; };
 		47C933CD1E55326F00B7FDDA /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
 		47C933CF1E5533AB00B7FDDA /* DashboardCommandTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCommandTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,7 +244,8 @@
 		477F30821E4F8F1000B6F671 /* PiControlUITests */ = {
 			isa = PBXGroup;
 			children = (
-				477F30831E4F8F1000B6F671 /* PiControlUITests.swift */,
+				47C0ACEE1E82FC50006ACF33 /* PiControlUITests.swift */,
+				477F30831E4F8F1000B6F671 /* PiControlTutorialUITests.swift */,
 				477F30851E4F8F1000B6F671 /* Info.plist */,
 			);
 			path = PiControlUITests;
@@ -477,7 +480,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				477F30841E4F8F1000B6F671 /* PiControlUITests.swift in Sources */,
+				47C0ACEF1E82FC50006ACF33 /* PiControlUITests.swift in Sources */,
+				477F30841E4F8F1000B6F671 /* PiControlTutorialUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
