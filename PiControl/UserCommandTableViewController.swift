@@ -44,6 +44,14 @@ class UserCommandTableViewController: UITableViewController, UITextFieldDelegate
         
         // Tap anywhere to dismiss the keyboard
         self.hideKeyboardWhenTappedAround()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set accessibility identifiers
+        self.navigationController?.navigationBar.accessibilityIdentifier = "UserCommandConfigNavBar"
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -119,6 +127,11 @@ class UserCommandTableViewController: UITableViewController, UITextFieldDelegate
         print("leaving")
     }
      */
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        print("Came here")
+        return true
+    }
  
     
     // MARK: - UITextFieldDelegate
@@ -168,19 +181,8 @@ class UserCommandTableViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
-    
     @IBAction func hasArgumentsChanged(_ sender: UISwitch) {
         command.commandHasArguments = sender.isOn
-    }
-    
-    func showAlert(message: String, title:String="Error") {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(OKAction)
-
-        self.present(alertController, animated: true, completion: nil)
     }
     
     func disableBackButton(){

@@ -29,13 +29,15 @@ class ServerListTableViewController: UITableViewController {
         settings.load()
         tableView.dataSource = self
         navigationItem.leftBarButtonItem = editButtonItem
-        
-        self.tabBarController?.tabBar.accessibilityIdentifier = "Settings"
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+
+        // Set accessibility identifiers
+        self.tabBarController?.tabBar.accessibilityIdentifier = "Settings"
+        self.navigationController?.navigationBar.accessibilityIdentifier = "ServerListNavBar"
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,11 +132,28 @@ class ServerListTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
+        var existingServerNames = [String]()
+        for server in settings.servers {
+            existingServerNames.append(server.name)
+        }
+        
         super.prepare(for: segue, sender: sender)
+        
         switch segue.identifier ?? "" {
             case "AddServer":
                 os_log("Adding a server", log:OSLog.default, type: .debug)
                 selectedRow = nil
+            
+                guard let navController = segue.destination as? UINavigationController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                guard let serverDetailViewController = navController.topViewController as? ServerConfigTableViewController else {
+                    fatalError("Unexpected view controller: \(navController.topViewController)")
+                }
+            
+                serverDetailViewController.existingServerNames = existingServerNames
+            
             case "ShowServer":
                 guard let serverDetailViewController = segue.destination as? ServerConfigTableViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
@@ -147,7 +166,7 @@ class ServerListTableViewController: UITableViewController {
                 }
                 selectedRow = indexPath
                 serverDetailViewController.currentServer = settings.servers[indexPath.row]
-            
+                serverDetailViewController.existingServerNames = existingServerNames
             default:
                 fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

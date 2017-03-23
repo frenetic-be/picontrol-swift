@@ -240,19 +240,6 @@ class TutorialViewController: UIViewController, UITextFieldDelegate {
         commandTextField.text = ""
         
     }
-    
-    
-    func showAlert(message: String, title:String="Error") {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(OKAction)
-        
-        self.present(alertController, animated: true) {
-        }
-    }
 
     // MARK: TextField delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

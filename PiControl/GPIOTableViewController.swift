@@ -42,8 +42,16 @@ class GPIOTableViewController: UITableViewController, GPIOPinProtocol, ConfigSer
         for item in navigationItem.rightBarButtonItems! {
             item.isEnabled = isOn
         }
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set accessibility identifiers
+        self.navigationController?.navigationBar.accessibilityIdentifier = "GPIONavBar"
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

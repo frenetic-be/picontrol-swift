@@ -46,9 +46,6 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         
         // Tap anywhere to dismiss the keyboard
         self.hideKeyboardWhenTappedAround()
-
-        // Set tabbar accessibility identifier
-        self.tabBarController?.tabBar.accessibilityIdentifier = "Dashboard"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +57,9 @@ class DashboardTableViewController: UITableViewController, UIAlertViewDelegate, 
         let hasShownTutorial = UserDefaults().bool(forKey: "hasShownTutorial")
         if hasShownTutorial {
             establishConnection()
+        
+        // Set tabbar accessibility identifier
+        self.tabBarController?.tabBar.accessibilityIdentifier = "Dashboard"
         }
     }
     

@@ -40,6 +40,14 @@ class CommandsTableViewController: UITableViewController, UserCommandProtocol {
         for item in navigationItem.rightBarButtonItems! {
             item.isEnabled = isOn
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set accessibility identifiers
+        self.navigationController?.navigationBar.accessibilityIdentifier = "UserCommandsNavBar"
+        
     }
     
     override func didReceiveMemoryWarning() {

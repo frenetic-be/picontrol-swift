@@ -13,6 +13,9 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
 
     // MARK: Properties
     var currentServer = PiServer(name: "", hostName: "http://yourpi.local", port: 3000)
+    
+    // Existing server names
+    var existingServerNames = [String]()
 
     @IBOutlet weak var serverNameTextField: UITextField!
     @IBOutlet weak var hostNameTextField: UITextField!
@@ -51,9 +54,16 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
         
         // Tap anywhere to dismiss the keyboard
         self.hideKeyboardWhenTappedAround()
-        
+
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set accessibility identifiers
+        self.navigationController?.navigationBar.accessibilityIdentifier = "ServerConfigNavBar"
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -153,7 +163,7 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
                 os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
                 return
             }
-            
+            // Save button was pressed
             currentServer.name = serverNameTextField.text ?? ""
             currentServer.hostName = hostNameTextField.text ?? ""
             let portNumber = portNumberTextField.text ?? "3000"
@@ -182,12 +192,18 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
-        case serverNameTextField, hostNameTextField:
-            if ((serverNameTextField.text?.isEmpty ?? true) || (hostNameTextField.text?.isEmpty ?? true)) {
+        case serverNameTextField:
+            let serverName = serverNameTextField.text ?? ""
+            if existingServerNames.contains(serverName) {
                 savePiButton.isEnabled = false
+                showAlert(message: "Server name already exists, please choose another name.")
             }
-            else {
-                savePiButton.isEnabled = true
+        case portNumberTextField:
+            enableSaveButton()
+            let portNumber = portNumberTextField.text ?? ""
+            if portNumber.characters.count != 4 {
+                showAlert(message: "The port number must be a 4-digit integer.")
+                return
             }
         default:
             return
@@ -195,6 +211,46 @@ class ServerConfigTableViewController: UITableViewController, UITextFieldDelegat
     }
 
     // MARK: Actions
+
+    func enableSaveButton() {
+        let serverName = serverNameTextField.text ?? ""
+        let hostAddress = hostNameTextField.text ?? ""
+        let portNumber = portNumberTextField.text ?? ""
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: portNumber)
+
+        if (serverName.isEmpty || hostAddress.isEmpty || portNumber.isEmpty || !allowedCharacters.isSuperset(of: characterSet) || portNumber.characters.count != 4) {
+            savePiButton.isEnabled = false
+        }
+        else {
+            savePiButton.isEnabled = true
+        }
+        if existingServerNames.contains(serverName) {
+            savePiButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func serverNameHasChanged(_ sender: UITextField) {
+        enableSaveButton()
+    }
+    
+    @IBAction func hostAddressHasChanged(_ sender: UITextField) {
+        enableSaveButton()
+    }
+    
+    @IBAction func portNumberHasChanged(_ sender: UITextField) {
+        enableSaveButton()
+        let portNumber = portNumberTextField.text ?? ""
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: portNumber)
+        if !allowedCharacters.isSuperset(of: characterSet) {
+            showAlert(message: "The port number must be a 4-digit integer.")
+            return
+        }
+    }
+    
+    
+    
     @IBAction func unwindToServerConfig(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? CommandsTableViewController {
             currentServer.userCommands.commands = sourceViewController.commands

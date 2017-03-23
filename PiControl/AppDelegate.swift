@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// Extension of UIViewController to hide keyboard when user taps anywhere
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -81,3 +82,20 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+// Extension of UIViewController to hide keyboard when user taps anywhere
+extension UIViewController {
+    // dispaly alert message
+    func showAlert(message: String, title:String="Error") {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        
+        self.present(alertController, animated: true) {
+        }
+    }
+}
+

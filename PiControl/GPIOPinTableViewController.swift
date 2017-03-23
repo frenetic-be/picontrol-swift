@@ -81,8 +81,16 @@ class GPIOPinTableViewController: UITableViewController, UITextFieldDelegate {
         
         // Tap anywhere to dismiss the keyboard
         self.hideKeyboardWhenTappedAround()
+
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Set accessibility identifiers
+        self.navigationController?.navigationBar.accessibilityIdentifier = "GPIOPinNavBar"
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
